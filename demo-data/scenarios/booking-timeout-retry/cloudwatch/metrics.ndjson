@@ -1,0 +1,1 @@
+{"availableAfterMs":26000,"provider":"cloudwatch","kind":"metric","name":"BookingLatencyP99","observedAt":"2026-09-04T15:26:00.000Z","value":2280,"unit":"Milliseconds","dimensions":{"service":"flightlab","route":"/api/book","releaseSha":"{{HEAD_SHA}}","operationId":"op-204"},"attributes":{"statistic":"p99","region":"us-west-1"}}
