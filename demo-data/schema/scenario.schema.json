@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FlightLab demo scenario",
+  "type": "object",
+  "required": ["schemaVersion", "scenarioId", "match", "anchor", "observationWindowMs", "providers"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "scenarioId": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "match": { "type": "object", "required": ["headBranch"], "properties": { "headBranch": { "type": "string" } }, "additionalProperties": false },
+    "anchor": { "type": "object", "required": ["type"], "properties": { "type": { "const": "github_pull_request_merged" } }, "additionalProperties": false },
+    "observationWindowMs": { "type": "integer", "minimum": 1 },
+    "providers": { "type": "object", "additionalProperties": { "enum": ["fixture", "live"] } }
+  },
+  "additionalProperties": false
+}
