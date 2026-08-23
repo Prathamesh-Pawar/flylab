@@ -12,23 +12,19 @@ then select any flight. Submit a name, email, phone number, and a 12–19 digit
 demo card number. The confirmation reference is stable for the selected flight
 and normalized email.
 
-## Runtime telemetry
+## Runtime monitoring boundary
 
-The app posts structured JSON to `/api/telemetry` for search submission,
-seat-bundle selection, and booking completion. The route emits those records to
-the server log with `service: "flightlab"`. It accepts no credentials and keeps
-no records. Do not send a real card number to this demo.
-
-## Opssemble fixtures
-
-Fixture data lives in `demo-data/scenarios`. Snapshot fixture data when a
-mission begins and make observations visible only after `availableAfterMs`
-relative to mission start. Apply all query filters after the visibility check.
-For a repair mission, choose `booking-timeout-retry/repair` explicitly from the
-linked repair metadata; never infer it from a query or a branch name.
+Check the deployed release metadata at `/api/version`. To enable a feature API
+route to notify monitoring, configure `OPSSEMBLE_INGEST_URL` and
+`OPSSEMBLE_INGEST_SECRET` in the server environment. The server signs a neutral
+runtime envelope before delivery. If delivery is unavailable, application
+results remain unchanged and the route can inspect the returned delivery status.
+Do not send a real card number to this demo.
 
 ## Reset
 
-There is no FlightLab persistence to reset. Reset the Fake Operations MCP demo
-session between rehearsals to restore its selected fixture scenario and action
-ledger.
+There is no FlightLab persistence to reset. Monitoring data and MCP operations
+are owned by the external Opssemble service. After a rehearsal, restore feature
+code through an ordinary revert PR; never force-push or rewrite FlightLab
+history. Opssemble monitoring provides guarded PR and revert scripts under
+`monitoring/flightlab-prs`.

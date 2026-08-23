@@ -5,18 +5,3 @@ service:
 deployment:
   provider: vercel
   source: live
-data_sources:
-  cloudwatch: fixture
-  posthog: fixture
-  stripe: fixture
-  fis: fixture
-scenarios:
-  - id: smart-seat-bundles
-    branch: feat/smart-seat-bundles
-    trigger: feature_flag_dial_up
-  - id: flexible-date-search
-    branch: feat/flexible-date-search
-    trigger: github_pull_request_merged
-  - id: booking-timeout-retry
-    branch: feat/booking-timeout-retry
-    trigger: github_pull_request_merged
