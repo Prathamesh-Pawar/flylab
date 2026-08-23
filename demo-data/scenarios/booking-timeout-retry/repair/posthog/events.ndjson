@@ -1,0 +1,2 @@
+{"availableAfterMs":0,"provider":"posthog","kind":"event","name":"booking_completed","observedAt":"2026-09-04T16:00:00.000Z","dimensions":{"window":"baseline","releaseSha":"baseline"},"attributes":{"numerator":72,"denominator":100,"completionRate":0.72}}
+{"availableAfterMs":30000,"provider":"posthog","kind":"event","name":"booking_completed","observedAt":"2026-09-04T16:30:00.000Z","dimensions":{"window":"candidate","releaseSha":"{{HEAD_SHA}}"},"attributes":{"numerator":71,"denominator":100,"completionRate":0.71,"operationId":"op-204"}}
