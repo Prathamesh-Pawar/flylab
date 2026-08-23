@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { FlexibleDateStrip } from "@/components/flexible-date-strip";
-import { emitClientObservation } from "@/lib/telemetry";
 
 export function SearchForm({ onSearch }: { onSearch: (origin: string, destination: string, date: string) => void }) {
   const [origin, setOrigin] = useState("SFO");
@@ -12,7 +10,6 @@ export function SearchForm({ onSearch }: { onSearch: (origin: string, destinatio
   function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     onSearch(origin, destination, date);
-    emitClientObservation({ provider: "posthog", kind: "event", name: "flight_search_submitted", attributes: { origin: origin.toUpperCase(), destination: destination.toUpperCase(), departureDate: date } });
   }
 
   return (
@@ -23,7 +20,6 @@ export function SearchForm({ onSearch }: { onSearch: (origin: string, destinatio
         <label>Departure<input type="date" value={date} onChange={(event) => setDate(event.target.value)} min="2026-09-01" max="2026-09-07" required /></label>
         <button className="button" type="submit">Search flights</button>
       </div>
-      <FlexibleDateStrip selectedDate={date} onSelect={setDate} />
     </form>
   );
 }

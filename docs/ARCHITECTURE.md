@@ -7,19 +7,19 @@ payment processor.
 ```text
 Browser search and checkout UI
   -> deterministic search and booking libraries
-  -> structured /api/telemetry runtime records
 
-Opssemble / Fake Operations MCP
-  -> demo-data/scenarios provider observations
+FlightLab feature API route
+  -> server-owned signed neutral runtime envelope
+  -> external Opssemble monitoring ingress and MCP service
 ```
 
 The app flow is `/` → `/checkout/[flightId]` → `/booking/[bookingId]`.
 `data/flights.ts` is the only source of flight inventory. `lib/booking.ts`
 normalizes traveler email and derives a deterministic booking reference and
-operation ID, which makes demo sessions and provider observations easy to
-correlate without storing traveler data.
+operation ID without storing traveler data.
 
-The telemetry endpoint only writes structured observations to the running
-server's standard output. A local collector may ingest them, but FlightLab does
-not retain them. Fixture reads belong to the Fake Operations MCP; they must not
-be performed by planner-facing application code.
+`/api/version` returns `service` and a server-owned deployment SHA. Feature API
+routes may use `lib/runtime-envelope.ts` to measure a result and emit the exact
+neutral envelope contract to the external monitoring ingress. FlightLab does
+not read provider fixtures, determine telemetry providers, or store monitoring
+data; those responsibilities belong to Opssemble.

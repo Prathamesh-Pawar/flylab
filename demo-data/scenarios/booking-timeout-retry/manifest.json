@@ -1,1 +1,0 @@
-{"schemaVersion":1,"scenarioId":"booking-timeout-retry","match":{"headBranch":"feat/booking-timeout-retry"},"anchor":{"type":"github_pull_request_merged"},"observationWindowMs":45000,"providers":{"cloudwatch":"fixture","posthog":"fixture","stripe":"fixture","fis":"fixture"}}

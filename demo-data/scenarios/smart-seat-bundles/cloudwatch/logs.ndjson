@@ -1,1 +1,0 @@
-{"availableAfterMs":16000,"provider":"cloudwatch","kind":"log","name":"seat_scoring_completed","observedAt":"2026-09-04T15:16:00.000Z","dimensions":{"service":"flightlab","releaseSha":"{{HEAD_SHA}}"},"attributes":{"route":"/checkout/FL-204","bundleCount":3,"durationMs":1210,"operationId":"seat-204"}}

@@ -1,1 +1,0 @@
-{"schemaVersion":1,"scenarioId":"smart-seat-bundles","match":{"headBranch":"feat/smart-seat-bundles"},"anchor":{"type":"github_pull_request_merged"},"observationWindowMs":45000,"providers":{"cloudwatch":"fixture","posthog":"fixture"}}

@@ -28,11 +28,12 @@ bun run build
 
 ## Opssemble integration boundary
 
-`demo-data/` contains merge-relative, provider-shaped observations for the
-Fake Operations MCP. They expose raw metrics, logs, product events, payment
-records, and fault experiment state. They never contain a Watch Plan, agent
-selection, verdict, policy result, report, issue text, or repair instruction.
+FlightLab exposes `/api/version`, which returns its service name and the
+server-owned deployed Git SHA (or `local` outside a deployment). Feature API
+routes can use `lib/runtime-envelope.ts` to measure an execution and send only
+a signed, neutral runtime envelope to the external Opssemble monitoring ingress.
 
-The app's `/api/telemetry` endpoint emits structured runtime logs to standard
-output. It makes the same search, seat-selection, and booking events observable
-for a local collector without adding application persistence.
+Set `OPSSEMBLE_INGEST_URL` and `OPSSEMBLE_INGEST_SECRET` in the server runtime
+to enable delivery. The browser neither chooses telemetry providers nor submits
+metric values, scenarios, labels, or outcomes. Monitoring, provider data, and
+MCP access belong to the external Opssemble service.
