@@ -20,11 +20,12 @@ export function createBookingReference(flightId: string, travelerEmail: string):
   return `FLB-${stableHash(`${flightId}:${normalizeEmail(travelerEmail)}`).slice(-7)}`;
 }
 
-export function createBookingOperationId(flightId: string, travelerEmail: string): string {
-  return `op-${stableHash(`${flightId}:${normalizeEmail(travelerEmail)}`).toLowerCase().slice(-8)}`;
+export function createBookingOperationId(flightId: string, travelerEmail: string, retryAttempt = 0): string {
+  // The retry attempt is included to make each provider retry independently traceable.
+  return `op-${stableHash(`${flightId}:${normalizeEmail(travelerEmail)}:attempt-${retryAttempt}`).toLowerCase().slice(-8)}`;
 }
 
-export function completeDemoBooking(input: BookingInput): DemoBooking {
+export function completeDemoBooking(input: BookingInput, retryAttempt = 0): DemoBooking {
   const flight = getFlight(input.flightId);
   if (!flight) throw new Error("Selected flight is unavailable.");
   const email = normalizeEmail(input.travelerEmail);
@@ -34,7 +35,7 @@ export function completeDemoBooking(input: BookingInput): DemoBooking {
     travelerName: input.travelerName.trim(),
     travelerEmail: email,
     bookingReference: createBookingReference(input.flightId, email),
-    operationId: createBookingOperationId(input.flightId, email),
+    operationId: createBookingOperationId(input.flightId, email, retryAttempt),
     amountCents: flight.fareCents
   };
 }
