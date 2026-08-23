@@ -12,4 +12,9 @@ describe("booking references", () => {
     expect(booking.operationId).toMatch(/^op-[a-z0-9]{8}$/);
     expect(booking.amountCents).toBe(42800);
   });
+
+  it("creates a different operation ID for a retry", () => {
+    const input = { flightId: "FL-204", travelerName: "Avery Chen", travelerEmail: "avery@example.com" };
+    expect(completeDemoBooking(input).operationId).not.toBe(completeDemoBooking(input, 1).operationId);
+  });
 });
