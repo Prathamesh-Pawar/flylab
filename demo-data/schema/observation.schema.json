@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FlightLab provider observation",
+  "type": "object",
+  "required": ["availableAfterMs", "provider", "kind", "name", "observedAt", "attributes"],
+  "properties": {
+    "availableAfterMs": { "type": "integer", "minimum": 0 },
+    "provider": { "enum": ["cloudwatch", "posthog", "stripe", "fis"] },
+    "kind": { "enum": ["metric", "log", "event", "record"] },
+    "name": { "type": "string", "minLength": 1 },
+    "observedAt": { "type": "string", "format": "date-time" },
+    "value": { "type": "number" },
+    "unit": { "type": "string" },
+    "dimensions": { "type": "object", "additionalProperties": { "type": "string" } },
+    "attributes": { "type": "object" }
+  },
+  "allOf": [
+    { "not": { "required": ["verdict"] } },
+    { "not": { "required": ["agent"] } },
+    { "not": { "required": ["agentResult"] } },
+    { "not": { "required": ["policyDecision"] } },
+    { "not": { "required": ["report"] } },
+    { "not": { "required": ["rootCause"] } }
+  ],
+  "additionalProperties": false
+}
