@@ -1,0 +1,1 @@
+{"availableAfterMs":18000,"provider":"cloudwatch","kind":"metric","name":"SearchLatencyP95","observedAt":"2026-09-04T15:18:00.000Z","value":430,"unit":"Milliseconds","dimensions":{"service":"flightlab","route":"/","releaseSha":"{{HEAD_SHA}}"},"attributes":{"statistic":"p95","region":"us-west-1"}}
