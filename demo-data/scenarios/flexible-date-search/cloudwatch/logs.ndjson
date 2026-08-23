@@ -1,0 +1,1 @@
+{"availableAfterMs":19000,"provider":"cloudwatch","kind":"log","name":"flexible_date_search_completed","observedAt":"2026-09-04T15:19:00.000Z","dimensions":{"service":"flightlab","releaseSha":"{{HEAD_SHA}}"},"attributes":{"route":"/","dayCount":7,"durationMs":390,"operationId":"search-204"}}
