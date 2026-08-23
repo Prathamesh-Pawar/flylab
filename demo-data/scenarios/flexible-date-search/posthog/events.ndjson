@@ -1,0 +1,1 @@
+{"availableAfterMs":25000,"provider":"posthog","kind":"event","name":"search_results_presented","observedAt":"2026-09-04T15:25:00.000Z","dimensions":{"releaseSha":"{{HEAD_SHA}}","window":"candidate"},"attributes":{"zeroResultRate":0.112,"baselineZeroResultRate":0.1,"flightSelectionRate":0.306,"baselineFlightSelectionRate":0.304}}
